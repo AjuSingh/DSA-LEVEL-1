@@ -18,7 +18,7 @@ public class MinCoins {
 	    for(int i=1;i<=M;i++){
 	       for(int j=1;j<=V;j++){
 	           if(coins[i-1]<=j){
-	               dp[j] = Math.min(dp[j-coins[i-1]] +1 , dp[j]);
+	               dp[j] = Math.min(dp[j-coins[i-1]]+1 , dp[j]);
 	           }
 	       }
 	    }
