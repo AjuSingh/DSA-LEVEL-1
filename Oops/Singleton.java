@@ -4,7 +4,7 @@ package Oops;
 public class Singleton {
 
 private Singleton(){
-//it can be accessable with in this class and cant be instantiated  in anohter class    
+//it can be accessable with in this class and cant be instantiated  in another class    
 }
 
 //making it static because it is not allowed to access constructor

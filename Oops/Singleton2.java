@@ -2,7 +2,7 @@ package Oops;
 
 public class Singleton2 {
   public static void main(String[] args) {
-          // Singleton ss = new Singleton(); //if we do this it is not accessable because the constructer
+          // Singleton ss = new Singleton(); //if we do this it is not accessable because the constructer is private
     //so we will access the method of Singleton which is static
     Singleton obj1 = Singleton.createInstance();
     Singleton obj2 = Singleton.createInstance();

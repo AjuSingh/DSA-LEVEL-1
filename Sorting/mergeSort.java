@@ -14,7 +14,7 @@ public class mergeSort {
     }
 
     static void merSort(int[] arr,int s,int e){
-        if(s==e){
+        if(s>=e){
             return; 
         }
 

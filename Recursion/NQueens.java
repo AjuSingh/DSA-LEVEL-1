@@ -8,6 +8,9 @@ public class NQueens {
 		int n = sc.nextInt();
 		int[][] arr = new int[n][n];
 		nQueen(arr, 0, "");
+		// for(int[] temp : arr) {
+		// 	System.out.println(Arrays.toString(temp));
+		// }
 	}
 	
 	static void nQueen(int[][] arr,int row,String str) {

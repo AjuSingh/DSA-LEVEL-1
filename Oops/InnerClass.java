@@ -20,8 +20,16 @@ public class InnerClass {
     }
 
     public static void main(String[] args) {
-        A a = new A("Aju"); // can't access the method of class A because it depends upon the class InnerClass and
+         A a = new A("Aju");  //can't access the method of class A because it depends upon the class InnerClass and
         //to get class A we need object of InnerClass
+
+
+        //to acces the inner classes when it is not static
+        // InnerClass inner = new InnerClass();
+        // InnerClass.A a = inner.new A("aju");
+        // System.out.println(a.name);
+
+
         //but if we make class A static it is independent of class InnerClass and we can get the A class
     }
 

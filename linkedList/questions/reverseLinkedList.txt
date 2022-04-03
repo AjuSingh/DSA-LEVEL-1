@@ -1,0 +1,29 @@
+public ListNode reverseList(ListNode head) {
+     if(head==null || head.next==null){
+         return head;
+     }
+     ListNode prev=null;
+     while(head!=null){
+        //putting the current node
+        ListNode cur = head;
+        //pointing to next node
+         head = head.next;
+         //putting the current node to prev node
+         cur.next = prev;
+         //making the current node as prev node for next node
+         prev=cur;
+     }
+     return prev;
+}
+
+//recursive way to reverse linked list
+  public ListNode reverse(ListNode head,ListNode prev){
+       if(head==null){
+           return prev;
+       }
+        
+       ListNode cur = head;
+       ListNode nextHead = head.next;
+       cur.next = prev;
+       return reverse(nextHead,cur);
+}

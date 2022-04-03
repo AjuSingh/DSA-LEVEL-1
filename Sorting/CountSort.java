@@ -38,10 +38,15 @@ public class CountSort {
 
         //creating new array to get the sorted array
         //count array has index more than one so -1 is needed to get the index of that element
+        //after -1 we get the index of the pos of the element
+        //we not just putting the counting element in the array to get the stable sort
         int[] ans = new int[n];
         for(int i=n-1;i>=0;i--){
-            ans[count[arr[i]-min]-1]=arr[i];
-            count[arr[i]-min]--;
+            int val = arr[i];
+            int pos = arr[i]-min;
+            int ind = count[pos-1];
+            ans[ind]= val;
+            count[pos]--;
         }
         System.out.println(Arrays.toString(ans));
         return;
