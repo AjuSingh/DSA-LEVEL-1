@@ -1,0 +1,65 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        //if we have only element means it is a palindrome
+        if(head==null || head.next==null){
+            return true;
+        }
+        
+        //now we need to get the three pointer mid mid-1 and end
+        ListNode prev=null,mid=head,fast=head;
+        while(fast!=null && fast.next!=null){
+           prev = (prev==null) ? mid : prev.next;
+           mid = mid.next;
+           fast = fast.next.next;
+        }
+        
+        //now if fast is null means list has even nodes 
+        //in case of odd we have one more node than left part so we will ignore that node by making the left part divided using 
+        //adding null at the end of left part
+        if(fast!=null){
+           prev.next = null;
+        }
+       ListNode rightPart =  reverse(mid);
+       ListNode leftPart = head;
+       while(leftPart!=null && rightPart!=null){
+           if(leftPart.val!=rightPart.val){
+               return false;
+           }
+           leftPart = leftPart.next;
+           rightPart = rightPart.next;
+       }
+
+       //now after all re reverse the right part to make the list again like the old one
+       if(fast!=null){
+           prev.next = reverse(mid);
+       }
+        return true;
+    }
+    
+    public ListNode reverse(ListNode head){
+        if(head==null || head.next==null){
+            return head;
+        }
+        
+        
+        ListNode prev = null;
+        while(head!=null){
+            ListNode cur =head;
+            head  = head.next;
+            cur.next = prev;
+            prev = cur;
+        }
+        
+        return prev;
+    }
+}

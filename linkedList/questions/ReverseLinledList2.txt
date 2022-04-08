@@ -1,0 +1,50 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+  class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+    //when only one node is present
+    if(left==right){
+        return head;
+    }
+    //skipping the left-1 nodes
+    //here we get the last node present on the left node to append the reverse list
+    ListNode present = head,prev=null;
+    int i=1;
+    while(i<left){
+        prev = present;
+        present = present.next;
+        i++;
+    }
+    //now we here get the end of reverse part of the list
+    //last is the 1->2->3->4->5  [2,4] we need to reverse the part between them so last is 1 and new end is 2 
+    //because 2 is the part which is at the left of the right part  1->4->3->2->5
+    ListNode newEnd = present,last=prev;
+    while(i<=right){
+        ListNode cur = present;
+        present = present.next;
+        cur.next= prev;
+        prev = cur;
+        i++;
+    }
+    //now here there is one condition to check if theere is some node present of it or not
+    //if there is no left part then make the new start or the starting of revesed list
+    ListNode newStart = prev; 
+    if(last==null){
+        head = newStart;
+    }else{
+        last.next = newStart;
+    }
+    //at the end connect the remaining list at the end of reversed list   
+    newEnd.next = present;
+    return head;
+}
+
+}

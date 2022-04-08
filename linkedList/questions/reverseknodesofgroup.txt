@@ -1,0 +1,48 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if(head==null || head.next==null || k==1){
+            return head;
+        }
+        
+        int cnt=0;
+        ListNode temp  = head;
+        while(temp!=null){
+            cnt++;
+            temp = temp.next;
+        }
+        //we have to rotate the group of k
+        int revCount = cnt/k;
+        ListNode present=head,prev=null,curEnd=null,prevEnd=null;
+        while(revCount>0){
+            curEnd = present;
+            //simply rotate the group of k
+            for(int i=0;i<k;i++){
+                ListNode cur= present;
+                present = present.next;
+                cur.next = prev;
+                prev = cur;
+            }
+            //now we know the first reverse list end is head 
+            if(revCount==cnt/k) head = prev;
+            //we need to remember the prevEnd to join with current starting
+            if(prevEnd!=null) prevEnd.next = prev;
+            //after everything make the curEnd as previous end
+            prevEnd = curEnd;
+            //making previous null to make the end null
+            prev=null;
+            revCount--;
+        }
+        prevEnd.next = present;
+        return head;
+    }
+}
