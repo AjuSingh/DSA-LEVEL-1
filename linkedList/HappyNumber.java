@@ -16,8 +16,8 @@ public class HappyNumber {
         do{
             slow = getSum(slow);
             fast = getSum(getSum(fast));
+            if(slow==1 || fast==1) return true;
         }while(slow!=fast);
-        if(slow==1 || fast==1) return true;
         return false;
     }
 

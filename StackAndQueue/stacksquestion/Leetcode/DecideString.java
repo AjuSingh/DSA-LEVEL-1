@@ -4,9 +4,7 @@ public class DecideString {
  public static void main(String[] args) {
      Scanner sc = new Scanner(System.in);
     String str = sc.next();
-    // System.out.println(decodeString(str));
-    int a=23;
-    System.out.println(-a);
+     System.out.println(decodeString(str));
      sc.close();
  } 
  
@@ -21,7 +19,7 @@ public class DecideString {
 // Input: s = "2[abc]3[cd]ef"
 // Output: "abcabccdcdcdef"
 
- public static String decodeString(String s) {
+ public static String decodeString2(String s) {
     String ans = "";
     Stack<String> stack = new Stack<>();
     Stack<Integer> count = new Stack<>();
@@ -54,4 +52,44 @@ public class DecideString {
     }
    return res;
 }
+ 
+ public static String decodeString(String s) {
+     Stack<Integer> num = new Stack<>();
+     Stack<String> str= new Stack<>();
+     int cnt = 0;
+   for(char ch:s.toCharArray()){
+     if(Character.isDigit(ch)){
+         cnt  = cnt*10 + (ch-'0');
+     }else if(ch=='['){
+         num.push(cnt);
+         cnt = 0;
+         str.push(ch+"");
+     }else if(ch==']'){
+         String cur = "";
+         while(!str.empty() && !str.peek().equals("[")){
+          cur = str.pop() + cur;   
+         }
+         //removing the [ this bracket
+         str.pop();
+         String temp = "";
+         for(int j=1;j<=num.peek();j++){
+             temp+=cur;
+         }
+         //adding the new string we made
+         str.push(temp);
+         //removing the cnt we used to make the upper string
+         num.pop();
+     }else{
+         str.push(ch+"");
+     }
+ }
+   String cur = "";
+         while(!str.empty()){
+          cur = str.pop() + cur;   
+     }
+     return cur;   
+ }       
+ 
+ 
+ 
 }

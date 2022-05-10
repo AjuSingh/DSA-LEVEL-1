@@ -42,7 +42,7 @@ class Solution {
             prev=null;
             revCount--;
         }
-        prevEnd.next = present;
+        prevEnd.next = present; 
         return head;
     }
 }

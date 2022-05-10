@@ -44,6 +44,6 @@ public class LargestAreaInHistogram {
             maxArea = curArea > maxArea ? curArea : maxArea;
         }
         return maxArea;
-    }
+    }										
 
 }

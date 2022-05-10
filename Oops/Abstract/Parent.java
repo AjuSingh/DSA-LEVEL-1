@@ -13,7 +13,7 @@ void greet(){
 //we can't create constructor of abstract classes because it doesn't allow to make object of abstract class
 //it is sense less for having constructor of abstract class becasue it doesn't allow to create object
 //we can create static methods of abstract class because it is independent of object
-//we can't ovverride static methods because it  doesn't depend on object
+//we can't ovverride static methods because it  doesn't depend on object  
 
 
 abstract void  aim();

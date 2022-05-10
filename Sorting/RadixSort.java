@@ -21,7 +21,7 @@ public class RadixSort {
     }
 
     static void count(int[] arr,int place){
-        //place represent the which elment need to pick up from the number
+        //place represent the which element need to pick up from the number
         int[] cnt=  new int[10];
         for(int i=0;i<arr.length;i++){
             int rem = arr[i]/place;

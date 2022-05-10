@@ -5,9 +5,11 @@ import java.util.*;
 public class PermuatationOfString {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String str = sc.next();
-		printPermuation(str, "");
-		sc.close();
+	    List<String> list = new ArrayList<>(5);
+		System.out.println(list);
+		// String str = sc.next();
+		// printPermuation(str, "");
+		// sc.close();
 	}
 
 	static void printPermuation(String str, String ans) {

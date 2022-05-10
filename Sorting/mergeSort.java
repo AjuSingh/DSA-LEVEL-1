@@ -11,6 +11,7 @@ public class mergeSort {
         }
         merSort(arr, 0, n-1);
         System.out.println(Arrays.toString(arr));
+        sc.close();
     }
 
     static void merSort(int[] arr,int s,int e){

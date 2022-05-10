@@ -29,6 +29,12 @@ public class InsertionSort {
             }
         }
     }
+    
+//    3,12,3,7,4
+//    3,12,3,7,4
+//    3,3,12,7,4
+//    3,3,7,12,4
+//    3,3,4,7,12
 
     static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
