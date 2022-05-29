@@ -44,7 +44,46 @@ public class BasicImp {
 //		display(root);
 //		linearize2(root);
 //		display(root);
-		find(root, 120, "");
+//		find(root, 120, "");
+		iterativePreorder(root);
+	}
+	
+	
+	static void iterativePreorder(Node root) {
+		//3 step
+		//add new node
+		//if doesn't have child then remove
+		//if we didn't complete the whole children then push and increase the state
+		Stack<Pair> stack = new Stack<>();
+		stack.push(new Pair(root));
+		while(!stack.empty()) {
+			Pair peek = stack.peek();
+			if(peek.state==-1) {
+				//preorder while adding the nodes
+				System.out.print(peek.node.data + " ");
+				peek.state++;
+			}
+			
+			if(peek.state==peek.node.children.size()) {
+				//post order while removing the node
+//				System.out.print(stack.pop().node.data + " "); 
+			}
+			
+			if(peek.state < peek.node.children.size()) {
+				stack.push(new Pair(peek.node.children.get(peek.state++)));
+			}		
+		}
+	}
+	
+	
+	static class Pair{
+		Node node;
+		int state;
+		
+		Pair(Node node){
+			state = -1;
+			this.node = node;
+		}
 	}
 
 	static void display(Node root) {
@@ -69,6 +108,27 @@ public class BasicImp {
 //		90-> 
 //		40-> 100, 
 //		100-> 
+	}
+	
+	static int dia=0;
+	static int diameter(Node node) {
+		int md = -1;
+		int smd = -1;
+		for(Node child:node.children) {
+			int cd = diameter(child);
+			if(cd>md) {
+				smd = md;
+				md = cd;
+			}else if(cd>smd) {
+				smd=  cd;
+			}
+		}
+		
+		
+		if(md+smd+2>dia) {
+			dia = md + smd + 2;
+		}
+		return md+1;
 	}
 
 	static int size(Node root) {
@@ -367,6 +427,40 @@ public class BasicImp {
 			ceilAndFloor(child, data);
 		}
 	}
+	
+	
+	  public static int kthLargest(Node node, int k){
+		    //idea is simple use the floor of the values and find the largest then its previous largest
+		    int ans = Integer.MAX_VALUE;
+		    //max value has floor which is greatest in the tree then we will pass to find the floor of largest 
+		    //number thats how we can find the largest
+		    for(int i=0;i<k;i++){
+		        ceilAndFloor(node,ans);
+		        ans = floor;
+		        //we need to find the floor again thats why we reintilizing the value of the floor;
+		        floor=Integer.MIN_VALUE;
+		    }
+		    return ans;
+		  }
+	  
+	  
+	  static int maxSum = Integer.MIN_VALUE;
+	  static int maxSumNode = Integer.MIN_VALUE;
+	  public static int getMaximumSumSubTree(Node root) {
+		 
+		  int sum = 0;
+		  for(Node node:root.children) {
+			  sum+=getMaximumSumSubTree(node);
+		  }
+		  
+		  sum+=root.data;
+		  if(maxSum<sum) {
+			  maxSum = sum;
+			  maxSumNode = root.data;
+		  }
+		  return sum;
+	  }
+	  
 
 	public static void printInOrderLinewiseZigZag(Node root) {
 		int cnt = 0;

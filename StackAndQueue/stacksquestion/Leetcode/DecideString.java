@@ -38,7 +38,7 @@ public class DecideString {
             res = "";
             i++;
         }else if(ch==']'){
-           String temp = stack.pop();
+            String temp = stack.pop();
             int repeatTimes=count.pop();
            for(int j=0;j<repeatTimes;j++){
               temp+=res; 
