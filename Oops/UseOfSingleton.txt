@@ -1,0 +1,56 @@
+Singleton pattern means at any point of time we can create only one instance/object of that class.
+
+This pattern prevents to create multiple instance.Where to use Singleton or when to go for Singleton:
+
+--> The class which does not contain attribute or any state.
+
+-> The class , for which we want to create only one object or instance.
+
+How to create a Singleton Class
+
+:Make the constructor as private.provide a static method and create the object inside that method by checking the condition.
+
+package com.singleton.tempconverter; 
+ 
+public class TemperatureConverter { 
+	private static TemperatureConverter converter=null; 
+	private TemperatureConverter() 
+	{ 
+	 
+	} 
+   public static TemperatureConverter getConverter() 
+   { 
+	   if(converter==null) 
+	   { 
+			converter=new TemperatureConverter(); 
+	   } 
+	   return converter; 
+   } 
+   public double convertCelceioustToFahrenheit(double temp) 
+   { 
+	   return (temp*9)/5+32;  
+   } 
+    
+   public double convertFahrenheitToCelceious(double temp) 
+   { 
+	   return (temp-32)*5/9; 
+   } 
+} 
+ 
+Test class 
+=========== 
+package Test; 
+ 
+import com.singleton.tempconverter.TemperatureConverter; 
+ 
+public class TempTest { 
+	public static void main(String[] args) { 
+		TemperatureConverter converter=TemperatureConverter.getConverter(); 
+		System.out.println(converter.convertCelceioustToFahrenheit(37)); 
+		System.out.println(converter.convertFahrenheitToCelceious(98.6)); 
+	} 
+ 
+} 
+This is one of the real time use case.All the converter classes, Should be singleton so that we can use it in any class with only one instance as there is no attribute in side the singleton classes.
+All the validation classes should be singleton so that one instance can be used in multiple class.
+to create a connection as Singleton.

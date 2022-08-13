@@ -34,7 +34,7 @@
         prev = cur;
         i++;
     }
-    //now here there is one condition to check if theere is some node present of it or not
+    //now here there is one condition to check if there is some node present of it or not
     //if there is no left part then make the new start or the starting of revesed list
     ListNode newStart = prev; 
     if(last==null){

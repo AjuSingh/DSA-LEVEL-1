@@ -23,7 +23,7 @@ public class InsertionSort {
                 if (arr[j - 1] > arr[j]) {
                     swap(arr, j-1, j);
                 } else {
-                    //if already sorted then we dont need to traverse further
+                    //if already sorted then we don't need to traverse further
                     break;
                 }
             }

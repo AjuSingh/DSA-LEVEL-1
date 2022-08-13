@@ -9,7 +9,11 @@ public class BinaryTree {
 				null };
 		Node root = construct(arr);
 //		display(root);
-		printSingleChildNode(root);
+		preorder(root);
+		System.out.println();
+		inorder(root);
+		System.out.println();
+		postorder(root);
 	}
 
 	public static class Pair {
@@ -197,17 +201,17 @@ public class BinaryTree {
 		// left data right
 		if (root == null)
 			return;
-		preorder(root.left);
+		inorder(root.left);
 		System.out.println(root.data);
-		preorder(root.right);
+		inorder(root.right);
 	}
 
 	static void postorder(Node root) {
 		// left right data
 		if (root == null)
 			return;
-		preorder(root.left);
-		preorder(root.right);
+		postorder(root.left);
+		postorder(root.right);
 		System.out.println(root.data);
 	}
 

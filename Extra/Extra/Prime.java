@@ -1,3 +1,5 @@
+package Extra;
+
 public class Prime{
 public static void main(String[] args) {
     int num = 10;
@@ -21,4 +23,5 @@ public static void main(String[] args) {
         b=c;
     }
 }
+
 }

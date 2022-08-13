@@ -1,9 +1,5 @@
 package binarySearchTree;
-
 import java.util.*;
-
-import binarytree.BinaryTree.Node;
-
 public class Bst {
 
 	static class Node {

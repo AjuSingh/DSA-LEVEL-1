@@ -31,5 +31,8 @@ public class Main {
         BoxPrice box5 = new BoxPrice();
         //we ge properties of both parent classes
         System.out.println(box5.h + " " + box5.price + "  " + box5.w +  " "  + box5.weight);
+        
+//        BoxWeight bx = new BoxWeight();
+//        System.out.println(bx.);
     }
 }
